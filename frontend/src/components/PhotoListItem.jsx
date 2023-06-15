@@ -40,3 +40,4 @@ PhotoListItem.defaultProps = {
 };
 
 export default PhotoListItem;
+export { PhotoListItem }; 

@@ -1,13 +1,19 @@
 import React from 'react';
+import photos from './mocks/photos';
+import { createPhotoList } from './helpers/PhotoListHelpers';
 
-import PhotoListItem from './components/PhotoListItem';
+
 import './App.scss';
 
-// Note: Rendering a single component to build components in isolation
-const App = () => (
-  <div className="App">
-    <PhotoListItem />
-  </div>
-);
+
+const App = () => {
+  const photoList = createPhotoList(photos, 9);
+
+  return (
+    <div className="App">
+      {photoList}
+    </div>
+  );
+};
 
 export default App;
