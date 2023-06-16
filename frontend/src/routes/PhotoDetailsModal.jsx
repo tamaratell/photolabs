@@ -7,8 +7,6 @@ import('../styles/PhotoFavButton.scss');
 
 const PhotoDetailsModal = ({ onClose, modalData }) => {
 
-  console.log("mdl", { modalData });
-
   const handleCloseButton = () => {
     onClose();
   };
@@ -20,17 +18,13 @@ const PhotoDetailsModal = ({ onClose, modalData }) => {
     id: modalData.id,
     location: modalData.location,
     onFavClick: modalData.onFavClick,
-    handleFavClick: modalData.handleFavClick
+    isFav: modalData.isFav,
   };
-
-  console.log("bpd", bannerPhotoData);
-
 
 
   const bannerPhotoItem = createModalBannerItem(bannerPhotoData);
-  const similarPhotoData = Object.values(modalData.similar_photos);
-  const similarPhotoList = createSuggestedList(similarPhotoData, modalData.onFavClick);
-
+  const similarPhotoData = modalData.similar_photos;
+  const similarPhotoList = createSuggestedList(similarPhotoData, modalData.onFavClick, modalData.handleOpenModal, modalData.isFav);
 
 
 

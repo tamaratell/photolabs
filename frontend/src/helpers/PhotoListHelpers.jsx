@@ -1,8 +1,7 @@
 import React from 'react';
-import photos from '../mocks/photos';
 import { PhotoListItem } from '../components/PhotoListItem';
 
-const createPhotoListItem = (photo, onFavClick, handleOpenModal) => {
+const createPhotoListItem = (photo, onFavClick, handleOpenModal, isFav) => {
   return (
     <PhotoListItem
       key={photo.id}
@@ -13,14 +12,17 @@ const createPhotoListItem = (photo, onFavClick, handleOpenModal) => {
       profile={photo.user.profile}
       onFavClick={onFavClick}
       openModal={handleOpenModal}
+      isFav={isFav}
       similar_photos={photo.similar_photos}
     />
   );
 };
 
-const createPhotoList = (photos, count, onFavClick, openModal) => {
+const createPhotoList = (photos, count, onFavClick, openModal, favPhotoIds) => {
   return new Array(count).fill().map((_, index) => {
-    return createPhotoListItem(photos[index % photos.length], onFavClick, openModal);
+    const photo = photos[index % photos.length];
+    const isFav = favPhotoIds.includes(photo.id);
+    return createPhotoListItem(photo, onFavClick, openModal, isFav);
   });
 };
 
