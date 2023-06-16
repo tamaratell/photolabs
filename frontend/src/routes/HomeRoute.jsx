@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import photos from '../mocks/photos';
 
@@ -8,10 +8,17 @@ import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = () => {
+
+  const [isFavPhotoExist, setIsFavPhotoExist] = useState(false);
+
+  const handleFavPhoto = (photoId) => {
+    setIsFavPhotoExist(!isFavPhotoExist);
+  };
+
   return (
     <div className="home-route">
-      <TopNavigation />
-      <PhotoList photoData={photos} />
+      <TopNavigation isFavPhotoExist={isFavPhotoExist} />
+      <PhotoList photoData={photos} onFavPhoto={handleFavPhoto} />
     </div>
   );
 };

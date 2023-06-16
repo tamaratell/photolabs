@@ -5,8 +5,14 @@ import '../styles/PhotoList.scss';
 
 const PhotoList = (props) => {
 
-  const { photoData } = props;
-  const photoCards = createPhotoList(photoData, 9);
+  const { photoData, onFavPhoto } = props;
+
+  const handleLikePhoto = () => {
+    onFavPhoto(photo.id);
+  };
+
+  const photoCards = createPhotoList(photoData, 9, handleLikePhoto);
+
 
   return (
     <ul className="photo-list">
