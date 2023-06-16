@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 
-import photos from './mocks/photos';
-
-import TopNavigation from './components/TopNavigationBar';
-import PhotoList from './components/PhotoList';
+import HomeRoute from './routes/HomeRoute';
 
 
 import './App.scss';
@@ -13,8 +10,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <TopNavigation />
-      <PhotoList photoData={photos} />
+      <HomeRoute />
     </div >
   );
 };
