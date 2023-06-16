@@ -5,6 +5,7 @@ import { PhotoListItem } from '../components/PhotoListItem';
 const createPhotoListItem = (photo) => {
   return (
     <PhotoListItem
+      key={photo.id}
       id={photo.id}
       location={photo.location}
       imageSource={photo.urls.full}
