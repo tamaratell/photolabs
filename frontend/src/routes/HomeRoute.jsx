@@ -12,12 +12,16 @@ const HomeRoute = () => {
   const [favPhotoIds, setFavPhotoIds] = useState([]);
 
   const handleFavPhoto = (photoId) => {
+    if (favPhotoIds.includes(photoId)) {
+      return setFavPhotoIds((prevIds) => prevIds.filter((id) => id !== photoId));
+    }
     setFavPhotoIds((prevIds) => [...prevIds, photoId]);
+
   };
 
-  console.log(favPhotoIds);
 
   const isFavPhotoExist = favPhotoIds.length > 0;
+
 
   return (
     <div className="home-route">
