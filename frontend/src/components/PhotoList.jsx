@@ -7,8 +7,8 @@ const PhotoList = (props) => {
 
   const { photoData, onFavPhoto } = props;
 
-  const handleLikePhoto = () => {
-    onFavPhoto(photo.id);
+  const handleLikePhoto = (photoId) => {
+    onFavPhoto(photoId);
   };
 
   const photoCards = createPhotoList(photoData, 9, handleLikePhoto);
