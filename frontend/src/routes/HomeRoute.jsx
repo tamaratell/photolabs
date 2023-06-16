@@ -7,22 +7,7 @@ import PhotoList from '../components/PhotoList';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({ handleOpenModal }) => {
-
-  const [favPhotoIds, setFavPhotoIds] = useState([]);
-
-  const handleFavPhoto = (photoId) => {
-    if (favPhotoIds.includes(photoId)) {
-      return setFavPhotoIds((prevIds) => prevIds.filter((id) => id !== photoId));
-    }
-    setFavPhotoIds((prevIds) => [...prevIds, photoId]);
-
-  };
-
-
-  const isFavPhotoExist = favPhotoIds.length > 0;
-
-
+const HomeRoute = ({ handleOpenModal, handleFavPhoto, isFavPhotoExist }) => {
 
 
   return (

@@ -1,36 +1,35 @@
-import React, { Profiler } from 'react';
-import { createSuggestedList, createModalBannerItem } from '../helpers/ModalHelpers';
+import React from 'react';
+// import { createSuggestedList, createModalBannerItem } from '../helpers/ModalHelpers';
+// import photos from '../mocks/photos';
+
+import { createPhotoList, createPhotoListItem } from '../helpers/PhotoListHelpers';
 
 import '../styles/PhotoDetailsModal.scss';
 import '../styles/PhotoList.scss';
 import('../styles/PhotoFavButton.scss');
 
-const PhotoDetailsModal = ({ onClose, modalData }) => {
-
-  console.log("mdl", { modalData });
+const PhotoDetailsModal = ({ onClose, modalData, onFavClick, isFavPhotoExist }) => {
 
   const handleCloseButton = () => {
     onClose();
   };
 
-  const bannerPhotoData = {
-    profile: modalData.profile,
-    imageSource: modalData.imageSource,
-    username: modalData.username,
+  const clickedPhoto = {
+    urls: { full: modalData.imageSource },
+    user: {
+      username: modalData.username,
+      profile: modalData.profile
+    },
     id: modalData.id,
-    location: modalData.location,
-    onFavClick: modalData.onFavClick,
-    handleFavClick: modalData.handleFavClick
+    location: modalData.location
   };
 
-  console.log("bpd", bannerPhotoData);
+  const similarPhotosArray = Object.values(modalData.similar_photos);
 
 
+  const similarPhotoList = createPhotoList(similarPhotosArray, similarPhotosArray.length, onFavClick, modalData.handleOpenModal);
 
-  const bannerPhotoItem = createModalBannerItem(bannerPhotoData);
-  const similarPhotoData = Object.values(modalData.similar_photos);
-  const similarPhotoList = createSuggestedList(similarPhotoData, modalData.onFavClick);
-
+  const photoBanner = createPhotoListItem(clickedPhoto, onFavClick, modalData.handleOpenModal);
 
 
 
@@ -51,7 +50,7 @@ const PhotoDetailsModal = ({ onClose, modalData }) => {
       </button>
       <div className='photo-details-modal__top-bar'>
         <ul className='modal__image' id='modal_banner'>
-          {bannerPhotoItem}
+          {photoBanner}
         </ul>
       </div>
       <div className='photo-details-modal__images'>

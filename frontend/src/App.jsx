@@ -11,6 +11,7 @@ const App = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
+  const [favPhotoIds, setFavPhotoIds] = useState([]);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -22,10 +23,21 @@ const App = () => {
     setModalData(data);
   };
 
+
+  const handleFavPhoto = (photoId) => {
+    if (favPhotoIds.includes(photoId)) {
+      return setFavPhotoIds((prevIds) => prevIds.filter((id) => id !== photoId));
+    }
+    setFavPhotoIds((prevIds) => [...prevIds, photoId]);
+
+  };
+
+  const isFavPhotoExist = favPhotoIds.length > 0;
+
   return (
     <div className="App">
-      <HomeRoute handleOpenModal={handleOpenModal} />
-      {isModalOpen && <PhotoDetailsModal onClose={handleCloseModal} modalData={modalData} />}
+      <HomeRoute handleOpenModal={handleOpenModal} handleFavPhoto={handleFavPhoto} isFavPhotoExist={isFavPhotoExist} />
+      {isModalOpen && <PhotoDetailsModal onClose={handleCloseModal} modalData={modalData} onFavClick={handleFavPhoto} isFavPhotoExist={isFavPhotoExist} />}
     </div >
   );
 };
