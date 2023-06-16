@@ -6,12 +6,12 @@ import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
   const { id, location, imageSource, username, profile } = props;
+
   const [isFav, setFav] = useState(false);
 
   const handleFavClick = () => {
     setFav(!isFav);
   };
-
 
   return (
     <li className='photo-list__item' key={id}>

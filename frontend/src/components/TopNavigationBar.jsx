@@ -3,11 +3,10 @@ import React from 'react';
 import topics from '../mocks/topics';
 
 import TopicList from './TopicList';
-import FavBadge from './FavBadge';
 
 import '../styles/TopNavigationBar.scss';
 
-const TopNavigation = () => {
+const TopNavigation = (props) => {
 
   return (
     <div className="top-nav-bar">

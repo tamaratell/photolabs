@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { createTopicList } from '../helpers/TopicListHelpers';
+import FavBadge from './FavBadge';
 
 import '../styles/TopicList.scss';
 
@@ -12,6 +13,7 @@ const TopicList = (props) => {
   return (
     <div className="top-nav-bar__topic-list">
       {topicListItems}
+      <FavBadge />
     </div>
   );
 };
