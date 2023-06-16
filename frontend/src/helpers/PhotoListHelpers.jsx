@@ -1,5 +1,5 @@
 import React from 'react';
-import '../mocks/photos';
+import photos from '../mocks/photos';
 import { PhotoListItem } from '../components/PhotoListItem';
 
 const createPhotoListItem = (photo) => {
