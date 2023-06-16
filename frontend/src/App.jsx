@@ -3,6 +3,7 @@ import React from 'react';
 import photos from './mocks/photos';
 import topics from './mocks/topics';
 
+import TopNavigation from './components/TopNavigationBar';
 import PhotoList from './components/PhotoList';
 import TopicList from './components/TopicList';
 
@@ -14,7 +15,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <TopicList topicData={topics} />
+      <TopNavigation />
       <PhotoList photoData={photos} />
     </div >
   );
