@@ -1,11 +1,22 @@
 import React from 'react';
+import { createSuggestedList, createModalBannerItem } from '../helpers/ModalHelpers';
+import PhotoListItem from '../components/PhotoListItem';
 
 import '../styles/PhotoDetailsModal.scss';
+import '../styles/PhotoList.scss';
+import('../styles/PhotoFavButton.scss');
 
 const PhotoDetailsModal = ({ onClose, modalData }) => {
+
+
+
   const handleCloseButton = () => {
     onClose();
   };
+
+  const bannerPhotoItem = createModalBannerItem(modalData);
+  const similarPhotoList = createSuggestedList(Object.values(modalData.similar_photos));
+
 
   return (
     <div className='photo-details-modal'>
@@ -22,6 +33,19 @@ const PhotoDetailsModal = ({ onClose, modalData }) => {
           </defs>
         </svg>
       </button>
+      <div className='photo-details-modal__top-bar'>
+        <ul className='modal__image' id='modal_banner'>
+          {bannerPhotoItem}
+        </ul>
+      </div>
+      <div className='photo-details-modal__images'>
+        <header className='photo-details-modal__header'>
+          Similar Photos
+        </header>
+        <ul className='photo-list'>
+          {similarPhotoList}
+        </ul>
+      </div>
     </div>
   );
 };

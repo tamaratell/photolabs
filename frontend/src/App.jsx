@@ -20,7 +20,6 @@ const App = () => {
   const handleOpenModal = (data) => {
     setIsModalOpen(true);
     setModalData(data);
-    console.log(data);
   };
 
   return (
