@@ -9,7 +9,7 @@ function PhotoFavButton(props) {
   return (
     <div onClick={onFavClick} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon fill={isFav ? '#C80000' : '#EEEEEE'} />
+        <FavIcon fill={isFav ? '#C80000' : '#FFFFFF'} />
       </div>
     </div>
   );

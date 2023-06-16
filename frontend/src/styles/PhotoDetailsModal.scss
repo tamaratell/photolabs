@@ -33,6 +33,7 @@
 .photo-details-modal__image {
   max-width: 95%;
   border-radius: 8px;
+  border: 1px solid #E6E6E6;
 }
 
 .photo-details-modal__top-bar {
@@ -47,6 +48,7 @@
 .photo-details-modal__photographer-details {
   display: flex;
   font-size: 16px;
+  margin-top: 8px;
 }
 
 .photo-details-modal__header {

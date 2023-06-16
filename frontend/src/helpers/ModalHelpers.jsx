@@ -7,7 +7,8 @@ const createModalBannerItem = (data) => {
   return <article>
     <PhotoFavButton isFav={data.isFav} onFavClick={data.onFavClick} key={data.id} />
     <img className='photo-details-modal__image' src={data.imageSource} alt="image" />
-    <div className='photo-list__user-details'>
+    <div className='photo-details-modal__photographer-details'>
+      <img src={data.profile} alt="user profile" className="photo-list__user-profile" />
 
       <div className="photo-list__user-info">{data.username}
 
@@ -17,7 +18,6 @@ const createModalBannerItem = (data) => {
 
       </div>
 
-      <img src={data.profile} alt="user profile" className="photo-list__user-profile" />
     </div>
   </article>;
 };

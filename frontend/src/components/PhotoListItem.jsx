@@ -25,6 +25,7 @@ const PhotoListItem = (props) => {
         <img className='photo-list__image' src={imageSource} alt="image" onClick={handleImageClick} />
 
         <div className='photo-list__user-details'>
+          <img src={profile} alt="user profile" className="photo-list__user-profile" />
 
           <div className="photo-list__user-info">{username}
 
@@ -34,7 +35,6 @@ const PhotoListItem = (props) => {
 
           </div>
 
-          <img src={profile} alt="user profile" className="photo-list__user-profile" />
         </div>
 
       </article>
