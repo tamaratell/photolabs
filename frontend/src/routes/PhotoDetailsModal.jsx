@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import { createSuggestedList, createModalBannerItem } from '../helpers/ModalHelpers';
-import PhotoListItem from '../components/PhotoListItem';
 
 import '../styles/PhotoDetailsModal.scss';
 import '../styles/PhotoList.scss';
@@ -8,14 +7,31 @@ import('../styles/PhotoFavButton.scss');
 
 const PhotoDetailsModal = ({ onClose, modalData }) => {
 
-
+  console.log("mdl", { modalData });
 
   const handleCloseButton = () => {
     onClose();
   };
 
-  const bannerPhotoItem = createModalBannerItem(modalData);
-  const similarPhotoList = createSuggestedList(Object.values(modalData.similar_photos));
+  const bannerPhotoData = {
+    profile: modalData.profile,
+    imageSource: modalData.imageSource,
+    username: modalData.username,
+    id: modalData.id,
+    location: modalData.location,
+    onFavClick: modalData.onFavClick,
+    handleFavClick: modalData.handleFavClick
+  };
+
+  console.log("bpd", bannerPhotoData);
+
+
+
+  const bannerPhotoItem = createModalBannerItem(bannerPhotoData);
+  const similarPhotoData = Object.values(modalData.similar_photos);
+  const similarPhotoList = createSuggestedList(similarPhotoData, modalData.onFavClick);
+
+
 
 
   return (

@@ -4,8 +4,9 @@ import PhotoListItem from '../components/PhotoListItem';
 import PhotoFavButton from '../components/PhotoFavButton';
 
 const createModalBannerItem = (data) => {
-  return <article>
-    <PhotoFavButton isFav={data.isFav} onFavClick={data.onFavClick} key={data.id} />
+  console.log("banner data", data);
+  return <article >
+    < PhotoFavButton id={data.id} key={data.id} onFavClick={data.handleFavClick} />
     <img className='photo-details-modal__image' src={data.imageSource} alt="image" />
     <div className='photo-details-modal__photographer-details'>
       <img src={data.profile} alt="user profile" className="photo-list__user-profile" />
@@ -19,12 +20,13 @@ const createModalBannerItem = (data) => {
       </div>
 
     </div>
-  </article>;
+  </article >;
 };
 
 
 
-const createModalPhotoItem = (photo, onFavPhoto) => {
+const createModalPhotoItem = (photo, onFavClick) => {
+  console.log("other", photo, onFavClick);
   return (
     <PhotoListItem
       key={photo.id}
@@ -33,15 +35,15 @@ const createModalPhotoItem = (photo, onFavPhoto) => {
       imageSource={photo.urls.full}
       username={photo.user.username}
       profile={photo.user.profile}
-      onFavPhoto={onFavPhoto}
+      onFavClick={onFavClick}
     />
   );
 };
 
 
-const createSuggestedList = (photos, onFavPhoto) => {
+const createSuggestedList = (photos, onFavClick) => {
   return photos.map((photo) => {
-    return createModalPhotoItem(photo, onFavPhoto);
+    return createModalPhotoItem(photo, onFavClick);
   });
 };
 

@@ -5,9 +5,9 @@ import '../styles/PhotoList.scss';
 
 const PhotoList = (props) => {
 
-  const { photoData, onFavPhoto, handleOpenModal } = props;
+  const { photoData, onFavClick, handleOpenModal } = props;
 
-  const photoCards = createPhotoList(photoData, 9, onFavPhoto, handleOpenModal);
+  const photoCards = createPhotoList(photoData, 9, onFavClick, handleOpenModal);
 
 
   return (

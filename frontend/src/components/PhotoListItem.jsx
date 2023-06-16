@@ -5,17 +5,18 @@ import PhotoFavButton from './PhotoFavButton';
 import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
-  const { id, location, imageSource, username, profile, onFavPhoto, openModal, similar_photos } = props;
+  const { id, location, imageSource, username, profile, onFavClick, openModal, similar_photos } = props;
+
 
   const [isFav, setFav] = useState(false);
 
   const handleFavClick = () => {
     setFav(!isFav);
-    onFavPhoto(id);
+    onFavClick(id);
   };
 
   const handleImageClick = () => {
-    openModal({ id, location, imageSource, username, profile, onFavPhoto, similar_photos, handleFavClick, isFav, setFav, PhotoFavButton, openModal });
+    openModal({ id, location, imageSource, username, profile, onFavClick, similar_photos, handleFavClick, isFav, setFav, PhotoFavButton, openModal });
   };
 
   return (
