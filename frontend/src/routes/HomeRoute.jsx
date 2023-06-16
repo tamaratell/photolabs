@@ -26,7 +26,7 @@ const HomeRoute = ({ handleOpenModal }) => {
   return (
     <div className="home-route">
       <TopNavigation isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList photoData={photos} onFavPhoto={handleFavPhoto} />
+      <PhotoList photoData={photos} onFavPhoto={handleFavPhoto} handleOpenModal={handleOpenModal} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/PhotoDetailsModal.scss';
 
-const PhotoDetailsModal = ({ onClose }) => {
+const PhotoDetailsModal = ({ onClose, modalData }) => {
   const handleCloseButton = () => {
     onClose();
   };

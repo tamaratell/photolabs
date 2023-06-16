@@ -10,19 +10,23 @@ import './App.scss';
 const App = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setModalData(null);
   };
 
-  const handleOpenModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const handleOpenModal = (data) => {
+    setIsModalOpen(true);
+    setModalData(data);
+    console.log(data);
   };
 
   return (
     <div className="App">
       <HomeRoute handleOpenModal={handleOpenModal} />
-      {isModalOpen && <PhotoDetailsModal onClose={handleCloseModal} />}
+      {isModalOpen && <PhotoDetailsModal onClose={handleCloseModal} modalData={modalData} />}
     </div >
   );
 };
