@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import HomeRoute from './routes/HomeRoute';
-import PhotoDetailsModal from './routes/PhotoDetailsModal';
+import { PhotoDetailsModal } from './routes/PhotoDetailsModal';
 
 
 import './App.scss';
@@ -9,10 +9,20 @@ import './App.scss';
 
 const App = () => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <div className="App">
-      <HomeRoute />
-      <PhotoDetailsModal />
+      <HomeRoute handleOpenModal={handleOpenModal} />
+      {isModalOpen && <PhotoDetailsModal onClose={handleCloseModal} />}
     </div >
   );
 };

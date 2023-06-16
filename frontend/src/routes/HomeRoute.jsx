@@ -7,7 +7,7 @@ import PhotoList from '../components/PhotoList';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
+const HomeRoute = ({ handleOpenModal }) => {
 
   const [favPhotoIds, setFavPhotoIds] = useState([]);
 
