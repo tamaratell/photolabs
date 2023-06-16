@@ -11,14 +11,14 @@ const createPhotoListItem = (photo, handleLikePhoto) => {
       imageSource={photo.urls.full}
       username={photo.user.username}
       profile={photo.user.profile}
-      onLikePhoto={handleLikePhoto}
+      onFavPhoto={handleLikePhoto}
     />
   );
 };
 
-const createPhotoList = (photos, count) => {
+const createPhotoList = (photos, count, onFavPhoto) => {
   return new Array(count).fill().map((_, index) => {
-    return createPhotoListItem(photos[index % photos.length]);
+    return createPhotoListItem(photos[index % photos.length], onFavPhoto);
   });
 };
 

@@ -5,13 +5,13 @@ import PhotoFavButton from './PhotoFavButton';
 import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
-  const { id, location, imageSource, username, profile, onLikePhoto } = props;
+  const { id, location, imageSource, username, profile, onFavPhoto } = props;
 
   const [isFav, setFav] = useState(false);
 
   const handleFavClick = () => {
     setFav(!isFav);
-    onLikePhoto(id);
+    onFavPhoto(id);
   };
 
   return (
