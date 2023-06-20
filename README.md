@@ -1,7 +1,9 @@
-# react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+# PhotoLabs
+PhotoLabs is a react-based pinterest clone. 
 
-# Photolabs
+## Features
+
+
 
 ## Setup
 
