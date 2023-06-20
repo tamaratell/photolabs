@@ -7,7 +7,7 @@ const PhotoList = (props) => {
 
   const { photoData, onFavClick, handleOpenModal, favPhotoIds } = props;
 
-  const photoCards = createPhotoList(photoData, 9, onFavClick, handleOpenModal, favPhotoIds);
+  const photoCards = createPhotoList(photoData, onFavClick, handleOpenModal, favPhotoIds);
 
 
   return (

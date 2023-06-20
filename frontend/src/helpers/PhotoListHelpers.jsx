@@ -18,8 +18,8 @@ const createPhotoListItem = (photo, onFavClick, handleOpenModal, favPhotoIds) =>
   );
 };
 
-const createPhotoList = (photos, count, onFavClick, openModal, favPhotoIds) => {
-  return new Array(count).fill().map((_, index) => {
+const createPhotoList = (photos, onFavClick, openModal, favPhotoIds) => {
+  return new Array(photos.length).fill().map((_, index) => {
     const photo = photos[index % photos.length];
     return createPhotoListItem(photo, onFavClick, openModal, favPhotoIds);
   });
