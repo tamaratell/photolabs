@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const useApplicationData = () => {
   const [state, setState] = useState({
@@ -49,8 +50,20 @@ const useApplicationData = () => {
   };
 
   useEffect(() => {
-    // Load the initial data from the API and update the state accordingly
-    // ...
+    axios.all([
+      axios.get('http://localhost:8001/api/photos'),
+      axios.get('http://localhost:8001/api/topics')
+    ])
+      .then(axios.spread((photosRes, topicsRes) => {
+        setState(prev => ({
+          ...prev,
+          photos: photosRes.data,
+          topics: topicsRes.data
+        }));
+      }))
+      .catch(error => {
+        console.error(error);
+      });
 
     // Clean up any subscriptions or resources if needed
     return () => {
