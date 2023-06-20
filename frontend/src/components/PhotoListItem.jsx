@@ -12,7 +12,7 @@ const PhotoListItem = (props) => {
   };
 
   const handleImageClick = () => {
-    openModal({ id, location, imageSource, username, profile, onFavClick, openModal, similar_photos, favPhotoIds }
+    openModal({ id, location, imageSource, username, profile, similar_photos }
     );
   };
 

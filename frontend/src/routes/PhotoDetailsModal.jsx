@@ -5,26 +5,27 @@ import '../styles/PhotoDetailsModal.scss';
 import '../styles/PhotoList.scss';
 import('../styles/PhotoFavButton.scss');
 
-const PhotoDetailsModal = ({ onClose, modalData }) => {
+const PhotoDetailsModal = ({ onClose, state, handleFav }) => {
+
+  const { favPhotoIds, photoDetailsModalData } = state;
+
 
   const handleCloseButton = () => {
     onClose();
   };
 
   const bannerPhotoData = {
-    profile: modalData.profile,
-    imageSource: modalData.imageSource,
-    username: modalData.username,
-    id: modalData.id,
-    location: modalData.location,
-    onFavClick: modalData.onFavClick,
-    isFav: modalData.isFav,
+    profile: photoDetailsModalData.profile,
+    imageSource: photoDetailsModalData.imageSource,
+    username: photoDetailsModalData.username,
+    id: photoDetailsModalData.id,
+    location: photoDetailsModalData.location,
   };
 
 
-  const bannerPhotoItem = createModalBannerItem(bannerPhotoData);
-  const similarPhotoData = modalData.similar_photos;
-  const similarPhotoList = createSuggestedList(similarPhotoData, modalData.onFavClick, modalData.handleOpenModal, modalData.isFav);
+  const bannerPhotoItem = createModalBannerItem(bannerPhotoData, favPhotoIds, handleFav);
+  const similarPhotoData = photoDetailsModalData.similar_photos;
+  const similarPhotoList = createSuggestedList(similarPhotoData, handleFav, null, favPhotoIds);
 
 
 

@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute handleOpenModal={setPhotoSelected} handleFav={updateToFavPhotoIds} state={state} />
-      {state.selectedPhoto && <PhotoDetailsModal onClose={onClosePhotoDetailsModal} state={state} />}
+      {state.selectedPhoto && <PhotoDetailsModal onClose={onClosePhotoDetailsModal} state={state} handleFav={updateToFavPhotoIds} />}
     </div >
   );
 };

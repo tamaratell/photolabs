@@ -4,17 +4,14 @@ import PhotoListItem from '../components/PhotoListItem';
 import PhotoFavButton from '../components/PhotoFavButton';
 
 
-const createModalBannerItem = (data) => {
+const createModalBannerItem = (data, favPhotoIds, handleFav) => {
 
-  const [isFav, setIsFav] = useState(false);
-
-  const handleFavClick = (id) => {
-    data.onFavClick(data.id);
-    setIsFav(true);
+  const handleFavClick = () => {
+    handleFav(data.id);
   };
 
   return <article id={data.id} key={data.id}>
-    < PhotoFavButton onFavClick={handleFavClick} isFav={isFav} />
+    < PhotoFavButton onFavClick={handleFavClick} favPhotoIds={favPhotoIds} id={data.id} />
     <img className='photo-details-modal__image' src={data.imageSource} alt="image" />
     <div className='photo-details-modal__photographer-details'>
       <img src={data.profile} alt="user profile" className="photo-list__user-profile" />
@@ -32,15 +29,7 @@ const createModalBannerItem = (data) => {
 };
 
 
-const createModalPhotoItem = (photo, onFavClick, handleOpenModal, isFav) => {
-
-  const [isLiked, setIsLiked] = useState(false);
-
-  const handleFavClick = (id) => {
-    onFavClick(id);
-    setIsLiked(true);
-  };
-
+const createModalPhotoItem = (photo, handleFav, handleOpenModal, favPhotoIds) => {
 
   return (
     <PhotoListItem
@@ -50,18 +39,18 @@ const createModalPhotoItem = (photo, onFavClick, handleOpenModal, isFav) => {
       imageSource={photo.urls.full}
       username={photo.user.username}
       profile={photo.user.profile}
-      onFavClick={handleFavClick}
+      onFavClick={handleFav}
       openModal={handleOpenModal}
-      isFav={isLiked}
+      favPhotoIds={favPhotoIds}
       similar_photos={photo.similar_photos}
     />
   );
 };
 
 
-const createSuggestedList = (photos, onFavClick, openModal, favPhotoIds) => {
+const createSuggestedList = (photos, handleFav, handleOpenModal, favPhotoIds) => {
   return Object.values(photos).map((photo) => {
-    return createModalPhotoItem(photo, onFavClick, openModal, favPhotoIds);
+    return createModalPhotoItem(photo, handleFav, handleOpenModal, favPhotoIds);
   });
 };
 
