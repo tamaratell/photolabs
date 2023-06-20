@@ -11,12 +11,12 @@ import './App.scss';
 
 const App = () => {
 
-  const { state, updateToFavPhotoIds, setPhotoSelected, onClosePhotoDetailsModal, fetchPhotosByTopic } = useApplicationData();
+  const { state, updateToFavPhotoIds, setPhotoSelected, onClosePhotoDetailsModal, fetchPhotosByTopic, fetchPhotos } = useApplicationData();
 
 
   return (
     <div className="App">
-      <HomeRoute handleOpenModal={setPhotoSelected} handleFav={updateToFavPhotoIds} state={state} handleTopicPhotos={fetchPhotosByTopic} />
+      <HomeRoute handleOpenModal={setPhotoSelected} handleFav={updateToFavPhotoIds} state={state} handleTopicPhotos={fetchPhotosByTopic} resetNav={fetchPhotos} />
       {state.selectedPhoto && <PhotoDetailsModal onClose={onClosePhotoDetailsModal} state={state} handleFav={updateToFavPhotoIds} />}
     </div >
   );

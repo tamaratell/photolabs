@@ -5,7 +5,7 @@ import PhotoList from '../components/PhotoList';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({ handleOpenModal, handleFav, handleTopicPhotos, state }) => {
+const HomeRoute = ({ handleOpenModal, handleFav, handleTopicPhotos, resetNav, state }) => {
 
 
   //loading state
@@ -22,7 +22,7 @@ const HomeRoute = ({ handleOpenModal, handleFav, handleTopicPhotos, state }) => 
 
   return (
     <div className="home-route">
-      <TopNavigation isFavPhotoExist={isFavPhotoExist} topics={state.topics} handleTopicPhotos={handleTopicPhotos} />
+      <TopNavigation isFavPhotoExist={isFavPhotoExist} topics={state.topics} handleTopicPhotos={handleTopicPhotos} resetNav={resetNav} />
       {state.photos && <PhotoList photoData={state.photos} onFavClick={handleFav} handleOpenModal={handleOpenModal} favPhotoIds={state.favPhotoIds} />}
     </div>
   );
