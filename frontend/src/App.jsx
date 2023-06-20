@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import useApplicationData from './hooks/useApplicationData';
 
 import HomeRoute from './routes/HomeRoute';
 import { PhotoDetailsModal } from './routes/PhotoDetailsModal';
@@ -9,23 +11,13 @@ import './App.scss';
 
 const App = () => {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState(null);
+  const { state, updateToFavPhotoIds, setPhotoSelected, onClosePhotoDetailsModal } = useApplicationData();
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setModalData(null);
-  };
-
-  const handleOpenModal = (data) => {
-    setIsModalOpen(true);
-    setModalData(data);
-  };
 
   return (
     <div className="App">
-      <HomeRoute handleOpenModal={handleOpenModal} />
-      {isModalOpen && <PhotoDetailsModal onClose={handleCloseModal} modalData={modalData} />}
+      <HomeRoute handleOpenModal={setPhotoSelected} handleFav={updateToFavPhotoIds} state={state} />
+      {state.selectedPhoto && <PhotoDetailsModal onClose={onClosePhotoDetailsModal} state={state} />}
     </div >
   );
 };

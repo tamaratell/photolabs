@@ -1,7 +1,7 @@
 import React from 'react';
 import { PhotoListItem } from '../components/PhotoListItem';
 
-const createPhotoListItem = (photo, onFavClick, handleOpenModal, isFav) => {
+const createPhotoListItem = (photo, onFavClick, handleOpenModal, isFavPhotoExist) => {
   return (
     <PhotoListItem
       key={photo.id}
@@ -12,17 +12,16 @@ const createPhotoListItem = (photo, onFavClick, handleOpenModal, isFav) => {
       profile={photo.user.profile}
       onFavClick={onFavClick}
       openModal={handleOpenModal}
-      isFav={isFav}
+      isFavPhotoExist={isFavPhotoExist}
       similar_photos={photo.similar_photos}
     />
   );
 };
 
-const createPhotoList = (photos, count, onFavClick, openModal, favPhotoIds) => {
+const createPhotoList = (photos, count, onFavClick, openModal, isFavPhotoExist) => {
   return new Array(count).fill().map((_, index) => {
     const photo = photos[index % photos.length];
-    const isFav = favPhotoIds.includes(photo.id);
-    return createPhotoListItem(photo, onFavClick, openModal, isFav);
+    return createPhotoListItem(photo, onFavClick, openModal, isFavPhotoExist);
   });
 };
 

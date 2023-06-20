@@ -5,23 +5,22 @@ import PhotoFavButton from './PhotoFavButton';
 import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
-  const { id, location, imageSource, username, profile, onFavClick, openModal, similar_photos, isFav } = props;
+  const { id, location, imageSource, username, profile, onFavClick, openModal, similar_photos, isFavPhotoExist } = props;
 
   const handleFavClick = () => {
     onFavClick(id);
   };
 
   const handleImageClick = () => {
-    openModal({ id, location, imageSource, username, profile, onFavClick, openModal, similar_photos, isFav }
+    openModal({ id, location, imageSource, username, profile, onFavClick, openModal, similar_photos, isFavPhotoExist }
     );
   };
 
   return (
-    <li className='photo-list__item' key={id}>
+    <li className='photo-list__item' key={id} id={id}>
       <article>
-        <PhotoFavButton isFav={isFav} onFavClick={handleFavClick} key={id} />
+        <PhotoFavButton onFavClick={handleFavClick} id={id} />
         <img className='photo-list__image' src={imageSource} alt="image" onClick={handleImageClick} />
-
         <div className='photo-list__user-details'>
           <img src={profile} alt="user profile" className="photo-list__user-profile" />
 
