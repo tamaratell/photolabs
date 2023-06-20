@@ -41,6 +41,7 @@ const useApplicationData = () => {
     // Update the state to close the photo details modal
     setState(prev => ({
       ...prev,
+      selectedPhoto: null,
       photoDetailsModalOpen: false,
       photoDetailsModalData: null
     }));
