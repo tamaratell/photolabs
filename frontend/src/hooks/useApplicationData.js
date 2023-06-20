@@ -7,6 +7,7 @@ const useApplicationData = () => {
     photoDetailsModalOpen: false, // If the photo details modal is open or not
     photoDetailsModalData: {},
     photos: [], // Array to store all the photos
+    topics: [] //Array to store all the topics
   });
 
   const updateToFavPhotoIds = (photoId) => {
