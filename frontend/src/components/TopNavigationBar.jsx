@@ -1,7 +1,5 @@
 import React from 'react';
 
-import topics from '../mocks/topics';
-
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
@@ -9,7 +7,7 @@ import '../styles/TopNavigationBar.scss';
 
 const TopNavigation = (props) => {
 
-  const { isFavPhotoExist } = props;
+  const { isFavPhotoExist, topics } = props;
 
   return (
     <div className="top-nav-bar">
