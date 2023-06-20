@@ -11,6 +11,9 @@ const useApplicationData = () => {
     topics: [] //Array to store all the topics
   });
 
+  // New state variable for the current topic
+  const [currentTopic, setCurrentTopic] = useState(null);
+
   const updateToFavPhotoIds = (photoId) => {
     // Toggle the favorite status of the photo
     setState(prev => ({
@@ -49,34 +52,46 @@ const useApplicationData = () => {
     }));
   };
 
-  useEffect(() => {
-    axios.all([
-      axios.get('http://localhost:8001/api/photos'),
-      axios.get('http://localhost:8001/api/topics')
-    ])
-      .then(axios.spread((photosRes, topicsRes) => {
-        setState(prev => ({
-          ...prev,
-          photos: photosRes.data,
-          topics: topicsRes.data
-        }));
-      }))
-      .catch(error => {
-        console.error(error);
-      });
+  const fetchPhotosByTopic = async (topic_id) => {
+    //Update topic id and fetch photos for that topic
+    setCurrentTopic(topic_id);
+    try {
+      const response = await axios.get(`http://localhost:8001/api/topics/photos/${topic_id}`);
+      setState(prev => ({ ...prev, photos: response.data }));
+    } catch (error) {
+      console.error('Error fetching photos by topic', error);
+    }
+  };
 
-    // Clean up any subscriptions or resources if needed
-    return () => {
-      // Cleanup code
-      // ...
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      try {
+        const response = await axios.get('http://localhost:8001/api/photos');
+        setState(prev => ({ ...prev, photos: response.data }));
+      } catch (error) {
+        console.error('Error fetching photos', error);
+      }
     };
-  }, []);
+
+    if (!currentTopic) {
+      fetchPhotos();
+    }
+
+    axios.get('http://localhost:8001/api/topics')
+      .then(response => {
+        setState(prev => ({ ...prev, topics: response.data }));
+      })
+      .catch(error => {
+        console.error('Error fetching topics', error);
+      });
+  }, [currentTopic]);
 
   return {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
+    fetchPhotosByTopic
   };
 };
 

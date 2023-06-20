@@ -7,13 +7,13 @@ import '../styles/TopNavigationBar.scss';
 
 const TopNavigation = (props) => {
 
-  const { isFavPhotoExist, topics } = props;
+  const { isFavPhotoExist, topics, handleTopicPhotos } = props;
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className='top-nav-bar__menu'>
-        <TopicList topicData={topics} />
+        <TopicList topicData={topics} handleTopicPhotos={handleTopicPhotos} />
         {isFavPhotoExist && <FavBadge isFavPhotoExist={isFavPhotoExist} />}
       </div>
     </div>

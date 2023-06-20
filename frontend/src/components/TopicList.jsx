@@ -6,8 +6,8 @@ import '../styles/TopicList.scss';
 
 const TopicList = (props) => {
 
-  const { topicData } = props;
-  const topicListItems = createTopicList(topicData);
+  const { topicData, handleTopicPhotos } = props;
+  const topicListItems = createTopicList(topicData, handleTopicPhotos);
 
   return (
     <div className="top-nav-bar__topic-list">
